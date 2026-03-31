@@ -320,6 +320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Transporter_Airplane_1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2e911a57cbbe5bc449ae9bd1cd5d0073, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2e911a57cbbe5bc449ae9bd1cd5d0073, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.970245
@@ -373,6 +377,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 2e911a57cbbe5bc449ae9bd1cd5d0073, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1872935479}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 2e911a57cbbe5bc449ae9bd1cd5d0073, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1872935483}
   m_SourcePrefab: {fileID: 100100000, guid: 2e911a57cbbe5bc449ae9bd1cd5d0073, type: 3}
 --- !u!1 &1872935477 stripped
 GameObject:
@@ -427,6 +434,27 @@ MonoBehaviour:
   yawSpeed: 45
   rollSpeed: 45
   thrustSpeed: 5
+--- !u!65 &1872935483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872935477}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 89.6796, y: 17.508333, z: 84.037415}
+  m_Center: {x: 0, y: 5.4825296, z: -19.539932}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
