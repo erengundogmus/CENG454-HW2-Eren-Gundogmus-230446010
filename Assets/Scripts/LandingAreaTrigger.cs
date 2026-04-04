@@ -21,7 +21,7 @@ public class LandingAreaTrigger : MonoBehaviour
             }
             else
             {
-                Debug.Log("Cannot land, threat still active!");
+                Debug.Log("cannot land, threat still active");
             }
         }
     }
