@@ -6,7 +6,11 @@ public class DangerZoneTrigger : MonoBehaviour
     public GameObject warningText;
     public GameObject missilePrefab;
     public Transform spawnPoint;
-    public float spawnDelay =5f;
+    public float spawnDelay = 5f;
+
+    public AudioSource audioSource;
+    public AudioClip warningClip;
+    public AudioClip missileClip;
 
     private Coroutine spawnCoroutine;
     private GameObject currentMissile;
@@ -22,9 +26,14 @@ public class DangerZoneTrigger : MonoBehaviour
                 warningText.SetActive(true);
             }
 
+            if (audioSource != null && warningClip != null)
+            {
+                audioSource.PlayOneShot(warningClip);
+            }
+
             if (spawnCoroutine == null)
             {
-                spawnCoroutine =StartCoroutine(SpawnMissileWithDelay(other));
+                spawnCoroutine = StartCoroutine(SpawnMissileWithDelay(other));
             }
         }
     }
@@ -37,10 +46,15 @@ public class DangerZoneTrigger : MonoBehaviour
         {
             currentMissile = Instantiate(missilePrefab, spawnPoint.position, spawnPoint.rotation);
 
-            MissileHoming homingScript =currentMissile.GetComponent<MissileHoming>();
+            MissileHoming homingScript = currentMissile.GetComponent<MissileHoming>();
             if (homingScript != null)
             {
-                homingScript.target =other.transform;
+                homingScript.target = other.transform;
+            }
+
+            if (audioSource != null && missileClip != null)
+            {
+                audioSource.PlayOneShot(missileClip);
             }
         }
 
