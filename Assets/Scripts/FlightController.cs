@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class FlightController : MonoBehaviour
 {
-    [SerializeField] private float pitchSpeed = 45f; // degrees/second
-    [SerializeField] private float yawSpeed = 45f;   // degrees/second
-    [SerializeField] private float rollSpeed = 45f;  // degrees/second
-    [SerializeField] private float thrustSpeed = 45f; // units/second
+    [SerializeField] private float pitchSpeed =45f; // degrees/second
+    [SerializeField] private float yawSpeed =45f;   // degrees/second
+    [SerializeField] private float rollSpeed =45f;  // degrees/second
+    [SerializeField] private float thrustSpeed =45f; // units/second
 
     // TODO (Task 3-A): Declare a private Rigidbody field named 'rb'
     private Rigidbody rb;

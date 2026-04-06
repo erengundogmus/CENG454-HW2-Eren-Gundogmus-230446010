@@ -3,8 +3,8 @@ using UnityEngine;
 public class MissileHoming : MonoBehaviour
 {
     public Transform target;
-    public float speed = 20f;
-    public float turnSpeed = 5f;
+    public float speed =20f;
+    public float turnSpeed =5f;
     public AudioClip explosionClip;
 
     private AudioSource audioSource;
@@ -12,20 +12,20 @@ public class MissileHoming : MonoBehaviour
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource =GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         if (target == null || hasHit) return;
 
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction =target.position - transform.position;
         direction.Normalize();
 
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, turnSpeed * Time.deltaTime);
+        Quaternion lookRotation =Quaternion.LookRotation(direction);
+        transform.rotation =Quaternion.Slerp(transform.rotation, lookRotation, turnSpeed*Time.deltaTime);
 
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward*speed*Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
