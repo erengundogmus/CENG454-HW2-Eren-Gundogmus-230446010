@@ -6,7 +6,7 @@ public class DangerZoneTrigger : MonoBehaviour
     public GameObject warningText;
     public GameObject missilePrefab;
     public Transform spawnPoint;
-    public float spawnDelay =5f;
+    public float spawnDelay = 5f;
 
     public AudioSource audioSource;
     public AudioClip warningClip;
@@ -17,8 +17,15 @@ public class DangerZoneTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
+            if (FlightExamManager.instance != null)
+            {
+                FlightExamManager.instance.enteredDangerZone = true;
+                FlightExamManager.instance.threatCleared = false;
+                FlightExamManager.instance.playerWasHit = false;
+            }
+
             Debug.Log("your plane has entered danger zone");
 
             if (warningText != null)
@@ -33,7 +40,7 @@ public class DangerZoneTrigger : MonoBehaviour
 
             if (spawnCoroutine == null)
             {
-                spawnCoroutine =StartCoroutine(SpawnMissileWithDelay(other));
+                spawnCoroutine = StartCoroutine(SpawnMissileWithDelay(other));
             }
         }
     }
@@ -44,12 +51,12 @@ public class DangerZoneTrigger : MonoBehaviour
 
         if (missilePrefab != null && spawnPoint != null)
         {
-            currentMissile =Instantiate(missilePrefab, spawnPoint.position, spawnPoint.rotation);
+            currentMissile = Instantiate(missilePrefab, spawnPoint.position, spawnPoint.rotation);
 
-            MissileHoming homingScript =currentMissile.GetComponent<MissileHoming>();
+            MissileHoming homingScript = currentMissile.GetComponent<MissileHoming>();
             if (homingScript != null)
             {
-                homingScript.target =other.transform;
+                homingScript.target = other.transform;
             }
 
             if (audioSource != null && missileClip != null)
@@ -63,9 +70,20 @@ public class DangerZoneTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("your plane has exited danger zone");
+            bool wasHit = false;
+
+            if (FlightExamManager.instance != null)
+            {
+                wasHit = FlightExamManager.instance.playerWasHit;
+                FlightExamManager.instance.threatCleared = true;
+            }
+
+            if (!wasHit)
+            {
+                Debug.Log("your plane has exited danger zone");
+            }
 
             if (warningText != null)
             {
