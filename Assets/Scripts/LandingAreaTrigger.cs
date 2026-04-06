@@ -8,7 +8,7 @@ public class LandingAreaTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GameObject missile = GameObject.FindWithTag("Missile");
+            GameObject missile =GameObject.FindWithTag("Missile");
 
             if (missile == null)
             {
